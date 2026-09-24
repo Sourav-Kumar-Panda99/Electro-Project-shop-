@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070f1e;
+  --surface: #0d1830;
+  --surface-elevated: #101d3a;
+  --foreground: #eef3ff;
+  --muted: #93a4c3;
+  --border: #1c2c4f;
+  --primary: #2f6bff;
+  --primary-hover: #4a7dff;
+  --secondary: #22d3ee;
+  --glow: #2f6bff55;
+  --card: #ffffff;
+  --card-foreground: #0d1830;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.circuit-bg {
+  background-image:
+    radial-gradient(circle at 20% 20%, var(--glow) 0%, transparent 35%),
+    radial-gradient(circle at 80% 0%, #22d3ee33 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%232f6bff' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M10 10h30v30M10 10v40M60 10h50M60 10v20h30M20 90h40v20M90 60h20M90 60v40M40 60v-20h-20'/%3E%3Ccircle cx='10' cy='10' r='2.5' fill='%232f6bff' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='60' cy='10' r='2.5' fill='%2322d3ee' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='90' cy='60' r='2.5' fill='%232f6bff' fill-opacity='0.4' stroke='none'/%3E%3Ccircle cx='20' cy='90' r='2.5' fill='%2322d3ee' fill-opacity='0.4' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: auto, auto, 120px 120px;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
